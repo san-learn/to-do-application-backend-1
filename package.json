@@ -2,6 +2,7 @@
   "name": "to-do-application-backend-1",
   "version": "1.0.0",
   "main": "./src/server.js",
+  "type": "module",
   "scripts": {
     "dev": "node --watch --env-file=.env ./src/server.js"
   },
