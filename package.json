@@ -1,0 +1,17 @@
+{
+  "name": "to-do-application-backend-1",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "scripts": {
+    "dev": "node --watch --env-file=.env ./src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "A backend for a to-do application using Node.js, Express.js, SQLite3, and JWT authentication.",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
