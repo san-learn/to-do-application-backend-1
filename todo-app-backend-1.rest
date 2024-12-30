@@ -1,0 +1,40 @@
+### Register
+POST http://localhost:5001/api/authentication/register
+Content-Type: application/json
+
+{
+  "username": "exampleUser",
+  "password": "examplePassword"
+}
+
+### Login
+POST http://localhost:5001/api/authentication/login
+Content-Type: application/json
+
+{
+  "username": "exampleUser",
+  "password": "examplePassword"
+}
+
+### Get All Todos
+GET http://localhost:5001/api/todos
+
+### Create Todo
+POST http://localhost:5001/api/todos
+Content-Type: application/json
+
+{
+  "task": "New Task"
+}
+
+### Update Todo
+PUT http://localhost:5001/api/todos/:todo-id
+Content-Type: application/json
+
+{
+  "task": "Updated Task",
+  "is_completed": true
+}
+
+### Delete Todo
+DELETE http://localhost:5001/api/todos/:todo-id
