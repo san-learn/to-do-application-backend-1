@@ -7,7 +7,7 @@ import { todoRoutes } from './routes/todo-routes.js';
 
 const application = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

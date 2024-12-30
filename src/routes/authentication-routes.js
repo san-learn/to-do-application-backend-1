@@ -4,10 +4,49 @@ import jwt from 'jsonwebtoken';
 
 import { database } from '../database.js';
 
-const authenticationRoutes = express.Router();
+const routes = express.Router();
 
-authenticationRoutes.post('/register', (request, response) => {});
+routes.post('/register', (request, response) => {
+  const { username, password } = request.body;
 
-authenticationRoutes.post('/login', (request, response) => {});
+  const hashedPassword = bcrypt.hashSync(password, 10);
 
-export { authenticationRoutes };
+  try {
+    const insertUserStatement = database.prepare(`
+      INSERT INTO users (username, password)
+      VALUES (?, ?)
+    `);
+
+    const insertUserResult = insertUserStatement.run(username, hashedPassword);
+
+    const insertTodoStatement = database.prepare(`
+      INSERT INTO todos (user_id, task)
+      VALUES (?, ?)  
+    `);
+
+    insertTodoStatement.run(
+      insertUserResult.lastInsertRowid,
+      `Hello ${username} 🙂, don't forget to add your first todo!`
+    );
+
+    const token = jwt.sign(
+      { id: insertUserResult.lastInsertRowid },
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' }
+    );
+
+    response.json({ token: token });
+  } catch (error) {
+    console.error(error.message);
+
+    response.sendStatus(503);
+  }
+});
+
+routes.post('/login', (request, response) => {
+  const { username, password } = request.body;
+
+  response.sendStatus(201);
+});
+
+export { routes as authenticationRoutes };

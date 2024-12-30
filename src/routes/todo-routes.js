@@ -2,14 +2,14 @@ import express from 'express';
 
 import { database } from '../database.js';
 
-const todoRoutes = express.Router();
+const routes = express.Router();
 
-todoRoutes.get('/', (request, response) => {});
+routes.get('/', (request, response) => {});
 
-todoRoutes.post('/', (request, response) => {});
+routes.post('/', (request, response) => {});
 
-todoRoutes.put('/:todo-id', (request, response) => {});
+routes.put('/:todo-id', (request, response) => {});
 
-todoRoutes.delete('/:todo-id', (request, response) => {});
+routes.delete('/:todo-id', (request, response) => {});
 
-export { todoRoutes };
+export { routes as todoRoutes };
