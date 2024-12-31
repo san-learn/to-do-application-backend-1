@@ -46,7 +46,42 @@ routes.post('/register', (request, response) => {
 routes.post('/login', (request, response) => {
   const { username, password } = request.body;
 
-  response.sendStatus(201);
+  try {
+    const selectUserStatement = database.prepare(
+      'SELECT * FROM users WHERE username = ?'
+    );
+
+    const selectUserResult = selectUserStatement.get(username);
+
+    if (!selectUserResult) {
+      return response
+        .status(404)
+        .send({ message: 'Invalid login credentials. Please try again.' });
+    }
+
+    const isPasswordValid = bcrypt.compareSync(
+      password,
+      selectUserResult.password
+    );
+
+    if (!isPasswordValid) {
+      return response
+        .status(401)
+        .send({ message: 'Invalid login credentials. Please try again.' });
+    }
+
+    const token = jwt.sign(
+      { id: selectUserResult.id },
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' }
+    );
+
+    response.json({ token: token });
+  } catch (error) {
+    console.error(error.message);
+
+    response.sendStatus(503);
+  }
 });
 
 export { routes as authenticationRoutes };
