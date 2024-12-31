@@ -18,6 +18,7 @@ Content-Type: application/json
 
 ### Get All Todos
 GET http://localhost:5001/api/todos
+Authorization: Bearer <token>
 
 ### Create Todo
 POST http://localhost:5001/api/todos

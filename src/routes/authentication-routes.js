@@ -35,11 +35,23 @@ routes.post('/register', (request, response) => {
       { expiresIn: '24h' }
     );
 
-    response.json({ token: token });
-  } catch (error) {
-    console.error(error.message);
+    console.log(
+      `HTTP POST | /api/authentication/register at ${new Date().toUTCString()}: User with Id ${
+        insertUserResult.lastInsertRowid
+      } has been registered.`
+    );
 
-    response.sendStatus(503);
+    response.json({ status: 'success', data: { token: token } });
+  } catch (error) {
+    console.error(
+      `HTTP POST | /api/authentication/register at ${new Date().toUTCString()}: ${
+        error.message
+      }`
+    );
+
+    response
+      .status(503)
+      .json({ status: 'error', message: 'Something went wrong.' });
   }
 });
 
@@ -54,9 +66,14 @@ routes.post('/login', (request, response) => {
     const selectUserResult = selectUserStatement.get(username);
 
     if (!selectUserResult) {
-      return response
-        .status(404)
-        .send({ message: 'Invalid login credentials. Please try again.' });
+      console.log(
+        `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: User with username ${username} not found.`
+      );
+
+      return response.status(404).json({
+        status: 'fail',
+        message: 'Invalid login credentials. Please try again.',
+      });
     }
 
     const isPasswordValid = bcrypt.compareSync(
@@ -65,9 +82,14 @@ routes.post('/login', (request, response) => {
     );
 
     if (!isPasswordValid) {
-      return response
-        .status(401)
-        .send({ message: 'Invalid login credentials. Please try again.' });
+      console.log(
+        `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: Password for user with username ${username} is incorrect.`
+      );
+
+      return response.status(401).json({
+        status: 'fail',
+        message: 'Invalid login credentials. Please try again.',
+      });
     }
 
     const token = jwt.sign(
@@ -76,11 +98,21 @@ routes.post('/login', (request, response) => {
       { expiresIn: '24h' }
     );
 
-    response.json({ token: token });
-  } catch (error) {
-    console.error(error.message);
+    console.log(
+      `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: User with username ${username} has logged in.`
+    );
 
-    response.sendStatus(503);
+    response.json({ status: 'success', data: { token: token } });
+  } catch (error) {
+    console.error(
+      `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: ${
+        error.message
+      }`
+    );
+
+    response
+      .status(503)
+      .json({ status: 'error', message: 'Something went wrong.' });
   }
 });
 
