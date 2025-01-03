@@ -24,7 +24,7 @@ Ensure you have the following installed on your system:
 
    ```bash
    git clone https://github.com/san-learn/to-do-application-backend-1.git
-   cd to-do-application-backend
+   cd to-do-application-backend-1
    ```
 
 2. Install dependencies:
