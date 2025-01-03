@@ -30,13 +30,15 @@ Content-Type: application/json
 }
 
 ### Update Todo
-PUT http://localhost:5001/api/todos/:todo-id
+PUT http://localhost:5001/api/todos/:todoId
+Authorization: Bearer <token>
 Content-Type: application/json
 
 {
   "task": "Updated Task",
-  "is_completed": true
+  "is_completed": 1
 }
 
 ### Delete Todo
-DELETE http://localhost:5001/api/todos/:todo-id
+DELETE http://localhost:5001/api/todos/:todoId
+Authorization: Bearer <token>
