@@ -2,12 +2,18 @@ import jwt from 'jsonwebtoken';
 
 export function authenticationMiddleware(request, response, next) {
   const HTTPMethod = request.method;
-  const URL = request.url;
+  const originalURL = request.originalUrl;
   const token = request.headers.authorization;
 
   if (!token) {
     console.log(
-      `${HTTPMethod} | ${URL} at ${new Date().toUTCString()}: No token provided.`
+      'HTTP ' +
+        HTTPMethod +
+        ' | ' +
+        originalURL +
+        ' at ' +
+        new Date().toUTCString() +
+        ': No token provided.'
     );
 
     return response.status(401).json({
@@ -19,7 +25,13 @@ export function authenticationMiddleware(request, response, next) {
   jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
     if (error) {
       console.log(
-        `${HTTPMethod} | ${URL} at ${new Date().toUTCString()}: Invalid token.`
+        'HTTP ' +
+          HTTPMethod +
+          ' | ' +
+          originalURL +
+          ' at ' +
+          new Date().toUTCString() +
+          ': Invalid token provided.'
       );
 
       return response.status(401).json({

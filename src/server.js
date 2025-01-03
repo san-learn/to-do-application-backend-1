@@ -22,6 +22,6 @@ application.use('/api/todos', authenticationMiddleware, todoRoutes);
 
 application.listen(PORT, () => {
   console.log(
-    `Server has started at ${new Date().toUTCString()} on port: ${PORT}`
+    'Server has started at ' + new Date().toUTCString() + ' on port: ' + PORT
   );
 });

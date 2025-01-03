@@ -36,17 +36,20 @@ routes.post('/register', (request, response) => {
     );
 
     console.log(
-      `HTTP POST | /api/authentication/register at ${new Date().toUTCString()}: User with Id ${
-        insertUserResult.lastInsertRowid
-      } has been registered.`
+      'HTTP POST | /api/authentication/register at ' +
+        new Date().toUTCString() +
+        ': User with Id ' +
+        insertUserResult.lastInsertRowid +
+        ' has been registered.'
     );
 
     response.json({ status: 'success', data: { token: token } });
   } catch (error) {
     console.error(
-      `HTTP POST | /api/authentication/register at ${new Date().toUTCString()}: ${
+      'HTTP POST | /api/authentication/register at ' +
+        new Date().toUTCString() +
+        ': ' +
         error.message
-      }`
     );
 
     response
@@ -67,7 +70,11 @@ routes.post('/login', (request, response) => {
 
     if (!selectUserResult) {
       console.log(
-        `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: User with username ${username} not found.`
+        'HTTP POST | /api/authentication/login at ' +
+          new Date().toUTCString() +
+          ': User with username ' +
+          username +
+          ' not found.'
       );
 
       return response.status(404).json({
@@ -83,7 +90,11 @@ routes.post('/login', (request, response) => {
 
     if (!isPasswordValid) {
       console.log(
-        `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: Password for user with username ${username} is incorrect.`
+        'HTTP POST | /api/authentication/login at ' +
+          new Date().toUTCString() +
+          ': Password for user with username ' +
+          username +
+          ' is incorrect.'
       );
 
       return response.status(401).json({
@@ -99,15 +110,20 @@ routes.post('/login', (request, response) => {
     );
 
     console.log(
-      `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: User with username ${username} has logged in.`
+      'HTTP POST | /api/authentication/login at ' +
+        new Date().toUTCString() +
+        ': User with username ' +
+        username +
+        ' has logged in.'
     );
 
     response.json({ status: 'success', data: { token: token } });
   } catch (error) {
     console.error(
-      `HTTP POST | /api/authentication/login at ${new Date().toUTCString()}: ${
+      'HTTP POST | /api/authentication/login at ' +
+        new Date().toUTCString() +
+        ': ' +
         error.message
-      }`
     );
 
     response
