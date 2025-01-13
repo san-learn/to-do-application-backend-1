@@ -2,15 +2,22 @@
 
 A simple backend server for managing a to-do list using Node.js, Express.js, SQLite3, and JWT authentication. This project can also serve as a learning tool for frontend developers experimenting with APIs.
 
+## Acknowledgements
+
+I would like to thank:
+
+- [Smoljames](https://www.youtube.com/@Smoljames) for the inspiring YouTube tutorial.
+- The open-source community for the amazing tools and libraries.
+
+## Motivation
+
+This project was created as a way to deepen my understanding of backend development with Node.js and Express.js. While inspired by a YouTube tutorial, I implemented the project with my own coding style and structure, ensuring a unique learning experience.
+
 ## Features
 
 - User authentication (register and login).
 - CRUD operations for managing to-do items.
 - Simple and lightweight design.
-
-## Target Users
-
-Everyone.
 
 ## Prerequisites
 
