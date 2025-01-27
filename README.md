@@ -166,6 +166,7 @@ src/
 ## Dependencies
 
 - [Express.js](https://expressjs.com)
+- [CORS](https://www.npmjs.com/package/cors)
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 
