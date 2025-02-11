@@ -163,27 +163,6 @@ src/
     └── todo-routes.js # API routes for to-do management
 ```
 
-## Dependencies
-
-- [Express.js](https://expressjs.com)
-- [CORS](https://www.npmjs.com/package/cors)
-- [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
-- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
-
-## Testing
-
-No automated tests are available for this project.
-
-## License
-
-This project does not use any license.
-
-## Contribution
-
-Contributions are currently not accepted.
-
-## Contact
-
 If you have any questions or feedback, feel free to reach out:
 
 - **Email**: [sanlearn3@gmail.com](mailto:sanlearn3@gmail.com)
