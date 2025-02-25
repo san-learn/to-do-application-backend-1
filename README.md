@@ -37,7 +37,7 @@ This project was created as a way to deepen my understanding of backend developm
    ```env
    PORT=5001
 
-   JWT_SECRET=your-secret-key
+   JWT_SECRET="your-secret-key"
    ```
 
 4. Start the development server:
