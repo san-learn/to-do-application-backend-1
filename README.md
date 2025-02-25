@@ -1,7 +1,5 @@
 # To-Do Application Backend 1
 
-A simple backend server for managing a to-do list using Node.js, Express.js, SQLite3, and JWT authentication. This project can also serve as a learning tool for frontend developers experimenting with APIs.
-
 ## Acknowledgements
 
 I would like to thank:
@@ -9,7 +7,7 @@ I would like to thank:
 - [Smoljames](https://www.youtube.com/@Smoljames) for the inspiring YouTube tutorial.
 - The open-source community for the amazing tools and libraries.
 
-## Motivation
+## Inspiration & Implementation
 
 This project was created as a way to deepen my understanding of backend development with Node.js and Express.js. While inspired by a YouTube tutorial, I implemented the project with my own coding style and structure, ensuring a unique learning experience.
 
@@ -19,15 +17,9 @@ This project was created as a way to deepen my understanding of backend developm
 - CRUD operations for managing to-do items.
 - Simple and lightweight design.
 
-## Prerequisites
-
-Ensure you have the following installed on your system:
-
-- [Node.js](https://nodejs.org)
-
 ## Installation
 
-1. Clone this repository:
+1. Clone this repository and navigate to the project directory:
 
    ```bash
    git clone https://github.com/san-learn/to-do-application-backend-1.git
@@ -44,7 +36,8 @@ Ensure you have the following installed on your system:
 
    ```env
    PORT=5001
-   JWT_SECRET=your_secret_key
+
+   JWT_SECRET=your-secret-key
    ```
 
 4. Start the development server:
@@ -162,6 +155,19 @@ src/
     ├── authentication-routes.js # API routes for authentication
     └── todo-routes.js # API routes for to-do management
 ```
+
+## Dependencies
+
+The server-side application is built using Node.js and Express, with additional libraries for security and authentication. Below are the dependencies used:
+
+| Dependency     | Description                                                   |
+| -------------- | ------------------------------------------------------------- |
+| `express`      | Fast, unopinionated web framework for Node.js.                |
+| `bcryptjs`     | Library for hashing passwords securely.                       |
+| `cors`         | Middleware for enabling Cross-Origin Resource Sharing (CORS). |
+| `jsonwebtoken` | Library for generating and verifying JWT tokens.              |
+
+## Contact
 
 If you have any questions or feedback, feel free to reach out:
 
